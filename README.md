@@ -71,7 +71,7 @@ contacts.each do |person, contact_details_hash|
 end
 ```
 
-In the terminal, let's hit the `pry` by running `learn`, and check
+In the terminal, let's hit the `pry` by running `learn test`, and check
 that our defined variables (`person` and `contact_details_hash`) match our
 expectations.
 
@@ -86,7 +86,7 @@ expectations.
 Excellent! They do!
 
 Type `exit` while in pry to continue (a second `pry` will trigger since we have
-_two_ contacts). Running `learn` will also display a test, which we haven't
+_two_ contacts). Running `learn test` will also display a test, which we haven't
 passed just yet.
 
 You can also run `ruby lib/contacts.rb` in the terminal - instead of displaying the
@@ -104,7 +104,7 @@ contacts.each do |person, contact_details_hash|
 end
 ```
 
-Again, let's jump into our `binding.pry` using `learn`. You should see:
+Again, let's jump into our `binding.pry` using `learn test`. You should see:
 
 ```bash
 > attribute
@@ -169,5 +169,3 @@ bin/contacts` in the terminal. It should output the hash without strawberry ice
 cream. Also, be sure to run the specs to make sure they pass.
 
 [rubydocs]: https://docs.ruby-lang.org/en/2.0.0/Hash.html#method-i-delete_if
-
-<a href='https://learn.co/lessons/nested-hash-iteration-code-along' data-visibility='hidden'>View this lesson on Learn.co</a>
