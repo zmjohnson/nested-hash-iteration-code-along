@@ -46,10 +46,11 @@ we'll work with the second way.
   1. You can directly iterate over the hash that is the value of the `"Freddy
 Mercury"` key by calling an enumerator method in `contacts["Freddy Mercury"]`.
 
-  2. You can set a conditional to iterate through the hash for `Freddy Mercury` only and when you reach the appropriate level,
-check to see if the key `==` ("is equal to") `:favorite_ice_cream_flavors`. If
-it does, check to see if that array contains `"strawberry"`. If it does, then
-delete it from the `Array`.
+  2. You can set a conditional to iterate through the hash for `Freddy Mercury` 
+only; when you reach the appropriate level, check to see if the key `==` 
+("is equal to") `:favorite_ice_cream_flavors`. If it is, check to see if the 
+array of flavors contains `"strawberry"`. If it does, then delete it from the 
+`Array`.
 
 #### Step 1: Iterate over the first level
 
@@ -71,8 +72,11 @@ contacts.each do |person, contact_details_hash|
 end
 ```
 
-In the terminal, let's hit the `pry` by running `learn test`, and check
-that our defined variables (`person` and `contact_details_hash`) match our
+We can enter the `pry` in one of two ways: by running `learn test` or by
+running `ruby lib/contacts.rb`. We'll use `learn test`.
+
+Let's run `learn test` in the terminal and, at the `pry` prompt, check that 
+our defined variables (`person` and `contact_details_hash`) match our 
 expectations.
 
 ```bash
@@ -85,12 +89,14 @@ expectations.
 
 Excellent! They do!
 
-Type `exit` while in pry to continue (a second `pry` will trigger since we have
-_two_ contacts). Running `learn test` will also display a test, which we haven't
-passed just yet.
+Type `exit` while in `pry` to continue. The `pry` should trigger a second time 
+because we have _two_ contacts. You can verify that we're in the second loop 
+through our hash by checking the values of `person` and `data` at the `pry` 
+prompt. 
 
-You can also run `ruby lib/contacts.rb` in the terminal - instead of displaying the
-the test results, this will reach the `binding.pry`.
+Typing `exit` now will end the loop and exit `pry` since we've finished 
+iterating through our contacts. It will also display the results of the test, 
+which we haven't passed just yet.
 
 #### Step 2. Iterate over the second level
 
@@ -104,15 +110,24 @@ contacts.each do |person, contact_details_hash|
 end
 ```
 
-Again, let's jump into our `binding.pry` using `learn test`. You should see:
+Again, let's jump into our `binding.pry` using `learn test`. We can verify
+that we've found the record for Freddy Mercury by checking the values
+of our variables:
 
 ```bash
 > attribute
 => :name
 
 > data
-=> "Jon"
+=> "Freddy"
 ```
+
+Before we move on, you will need to exit `pry` again so you can see the
+results of the new code we'll be writing in Step 3. We are now inside the 
+loop through the attributes. Because there are three of them, we will need 
+to run `exit` three times to finish the loop and exit `pry`. Alternatively, 
+you can run `exit!` or `!!!` at any time to exit out of `pry` entirely.
+
 
 #### Step 3. Locate the element we're looking for
 
@@ -128,15 +143,19 @@ contacts.each do |person, contact_details_hash|
 end
 ```
 
-What is `data` when we hit the binding? If it's unclear, let's go into our
-binding.
+This time we are still iterating through the attributes but we've added a
+conditional so the `pry` will only hit when the attribute is equal to
+`:favorite_ice_cream_flavors`. If we check the value of `data` in our 
+binding, we should see the array containing Freddy's favorite flavors.
 
 #### Step 4. Update the hash
 
 Lastly, we will use `delete_if` to iterate through the ice cream array and
-remove any element that matches "strawberry". `delete_if` will iterate through
-the hash and delete the key/value pair if the block returns `true`. [Learn more
-about it in the ruby docs.][rubydocs].
+remove any element that matches "strawberry". Recall that `data` is the array
+containing Freddy's favorite ice cream flavors. `delete_if` will iterate through
+the array, check each element to see if it is equal to "strawberry", and delete 
+the key/value pair if the block returns `true`. [Learn more about it in the ruby 
+docs.][rubydocs].
 
 ```ruby
 contacts.each do |person, contact_details_hash|
@@ -149,6 +168,8 @@ contacts.each do |person, contact_details_hash|
   end
 end
 ```
+
+The full method should now be:
 
 ```ruby
 def remove_strawberry(contacts)
